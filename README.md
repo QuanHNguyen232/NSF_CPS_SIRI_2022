@@ -4,8 +4,8 @@ This work is for research project at [*N*HanCE](https://engineering.purdue.edu/N
 
 ### Table of Content
 
-1. [Files](Files)
-2. [Instruction](Instruction)
+1. [Files](#files)
+2. [Instruction](#instruction)
 
 ---
 
