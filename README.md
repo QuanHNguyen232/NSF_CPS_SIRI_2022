@@ -11,12 +11,24 @@ This work is for research project at [*N*HanCE](https://engineering.purdue.edu/N
 
 ## Files
 
-1. `convert_daq_csv.m`: run on Matlab
-2. `requirements.txt`: contain the version of Python libraries used in this project
-3. `accum_csv.py`: merge all csv file into a big csv file that contains the whole dataset
+1. `convert_daq_csv.m`: convert daq features into csv files - each feature results in 1 one csv file (Matlab) -- do not use this.
+2. `convert_daq_csv.m`: convert daq features into txt files - each feature results in 1 one txt file (Matlab).
+3. `requirements.txt`: contain the version of Python libraries used in this project.
+4. `accum_csv.py`: merge all csv file into a big csv file that contains the whole dataset.
+5. `miniSim-to-txt.py`: convert .miniSim file to .txt file.
+6. `merge-miniSim.py`: merge dataset from daq with .miniSim data based on `frame`.
 ---
 
 ## Instruction
+
+#### Follow this order:
+1. Run `convert_daq_csv.m`
+2. Setup environment
+3. Install libraries using `requirements.txt`
+4. Run `accum_csv.py`
+5. Run `miniSim-to-txt.py`
+6. Run `merge-miniSim.py`
+
 
 ### convert_daq_csv.m:
 1. Run the `setpath_ndaqtools.m` in ndaqtools package (contact Professor Brandon Pitts at Purdue University for further information)
@@ -42,7 +54,6 @@ conda activate env_name
 ```
 pip install -r requirements.txt
 ```
-***Note***: This should be done before working on `*.py` files
 
 
 ### accum_csv.py:
@@ -51,3 +62,19 @@ pip install -r requirements.txt
 ```
 python accum_csv.py output_filename.csv
 ```
+Or extension of feature data files: txt/csv (result from `convert_daq_txt.m`)
+```
+python accum_csv.py filename.txt -x extension
+```
+
+### miniSim-to-txt.py;
+
+### merge-miniSim.py
+1. Type this command:
+```
+python read-miniSim.py out_name file_1 file_2 merge_on
+```
+*With*:
+* file_1 = 'accum-data.txt'
+* file_2 = 'P13-miniSim.txt'
+* merge_on = 'Frames0'
