@@ -2,7 +2,7 @@ from numpy import void
 import pandas as pd
 from argparse import ArgumentParser
 
-def accum_csv(out_name: str, data_extension = '.txt') -> None:
+def accum_csv(out_name: str, data_extension = 'txt') -> None:
     """
     Merge each feature data file into a big dataset since each feature is exported as a seperate file from convert_daq_txt.m (Matlab)
     
@@ -17,7 +17,7 @@ def accum_csv(out_name: str, data_extension = '.txt') -> None:
         # Read all features
         feat_list = f.readline().replace('\n', '').split(',')
         # Read all csv files
-        df_list = [pd.read_csv(feat + data_extension, header=None, prefix=feat.replace('.csv', '_')) for feat in feat_list]
+        df_list = [pd.read_csv(feat + '.' + data_extension, header=None, prefix=feat.replace('.csv', '_')) for feat in feat_list]
         # Concatnate all df into 1 df
         df = pd.concat(df_list, axis=1)
         # Save df as file
