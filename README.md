@@ -2,6 +2,8 @@
 
 This work is for research project at [*N*HanCE](https://engineering.purdue.edu/NHanCE) lab at Purdue University through the [NSF CPS Frontier: Cognitive Autonomy for Human CPS project](https://autonomy.unm.edu/index.html)
 
+**NOTE:** sample-data folder will be deleted in the future
+
 ### Table of Content
 
 1. [Files](#files)
