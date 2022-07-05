@@ -23,7 +23,7 @@ def merge_daq_miniSim(out_name: str, file_1: str, file_2: str, merge_on: str) ->
 
     print(df_sim.shape, df_daq.shape)
 
-    df = pd.merge(df_daq, df_sim, how='left', on=merge_on, indicator=True)
+    df = pd.merge(df_daq, df_sim, how='right', on=merge_on, indicator=True)
     print(df.shape)
 
     df.to_csv(out_name, header=True, index=False, sep='\t', mode='a')
