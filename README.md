@@ -14,7 +14,7 @@ This work is for research project at [*N*HanCE](https://engineering.purdue.edu/N
 ## Files
 
 1. `convert_daq_csv.m`: convert daq features into csv files - each feature results in 1 one csv file (Matlab) -- do not use this.
-2. `convert_daq_csv.m`: convert daq features into txt files - each feature results in 1 one txt file (Matlab).
+2. `convert_daq_txt.m`: convert daq features into txt files - each feature results in 1 one txt file (Matlab).
 3. `requirements.txt`: contain the version of Python libraries used in this project.
 4. `accum_csv.py`: merge all csv file into a big csv file that contains the whole dataset.
 5. `miniSim-to-txt.py`: convert .miniSim file to .txt file.
