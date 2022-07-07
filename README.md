@@ -28,7 +28,7 @@ This work is for research project at [*N*HanCE](https://engineering.purdue.edu/N
 1. Run `convert_daq_csv.m`
 2. Setup environment
 3. Install libraries using `requirements.txt`
-4. Run `accum_csv.py`
+4. Run `accum_feat.py`
 5. Run `miniSim-to-txt.py`
 6. Run `merge-miniSim.py`
 
@@ -59,7 +59,7 @@ pip install -r requirements.txt
 ```
 
 
-### accum_csv.py:
+### accum_feat.py:
 1. Open terminal
 2. Type the following command:
 ```

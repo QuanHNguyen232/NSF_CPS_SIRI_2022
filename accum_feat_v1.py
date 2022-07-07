@@ -1,8 +1,7 @@
-from numpy import void
 import pandas as pd
 from argparse import ArgumentParser
 
-def accum_csv(out_name: str, data_extension = 'txt') -> None:
+def accum_feat(out_name: str, data_extension = 'txt') -> None:
     """
     Merge each feature data file into a big dataset since each feature is exported as a seperate file from convert_daq_txt.m (Matlab)
     
@@ -32,14 +31,14 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.extension:
-        accum_csv(args.output_name, args.extension)
+        accum_feat(args.output_name, args.extension)
     else:
-        accum_csv(args.output_name)
+        accum_feat(args.output_name)
         
     print('accum_csv.py -- DONE')
     
     # terminal: 
-    #       py accum_csv.py filename.txt
-    # or    py accum_csv.py filename.txt -x extension
+    #       py accum_feat.py filename.txt
+    # or    py accum_feat.py filename.txt -x extension
     # with:
-    #   extension: csv or txt by default
+    #   extension: txt by default or csv
