@@ -19,6 +19,7 @@ This work is for research project at [*N*HanCE](https://engineering.purdue.edu/N
 4. `accum_csv.py`: merge all csv file into a big csv file that contains the whole dataset.
 5. `miniSim-to-txt.py`: convert .miniSim file to .txt file.
 6. `merge-miniSim.py`: merge dataset from daq with .miniSim data based on `frame`.
+7. `convert-miniSim-txt.py` and `convert-eyetracking-txt.py`: create the same `merge` column to easily merge miniSim and eyetracking data together.
 ---
 
 ## Instruction
