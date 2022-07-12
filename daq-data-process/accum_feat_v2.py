@@ -1,6 +1,8 @@
+# %%
 import pandas as pd
 from argparse import ArgumentParser
 
+# %%
 def accum_feat(target_folder:str, out_name:str, data_extension = 'txt') -> None:
     """
     Merge each feature data file into a big dataset since each feature is exported as a seperate file from convert_daq_txt.m (Matlab)
@@ -39,18 +41,21 @@ def accum_feat(target_folder:str, out_name:str, data_extension = 'txt') -> None:
     print('accum_feat func -- concat and create {%s} -- DONE'%(out_name))
     return True
 
+# %%
 if __name__ == '__main__':
     
-    num_samples = 1
+    num_samples = 33
 
-    for i in range(num_samples):
+    for i in range(1, num_samples):
         daq_id = 'P' + str(i)
-        in_folder = './' + daq_id + '/Driving SIM/Each-feat'
-        out_file = './' + daq_id + '/' + daq_id + '-daq.txt'
+        in_folder = './%s/Driving SIM/Each-feat'%(daq_id)
+        out_file = './%s/%s-daq.txt'%(daq_id, daq_id)
         if not accum_feat(in_folder, out_file):
             break
 
+        print(in_folder, out_file)
 
+    
     print('accum_feat.py -- DONE')
     
 
