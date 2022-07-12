@@ -1,0 +1,69 @@
+----MAYA's-NOTE------
+Must:
+SCC_Collision_count (added)
+VDS brake Pedal Force (added)
+
+-------------------------------------------------
+
+Only prefixes should use:
+- SCC
+- VDS
+
+SCC_DynObj_heading (maybe useful)
+
+
+Dont need:
+-LDW
+-CIS
+-CFS
+-LKA
+
+-------------------------------------------------
+
+important:
+
+SCC DynObj * (rows 34-40)
+
+VDS chassis CG accel (added)
+VDS chassis CG Position	(added)
+VDS Veh Speed (added)
+VDS Veh Heading (added)
+VDS BrkPdl Fr Filtrd ("NOT" CFS Brake Pedal Force) (minisim cell 100-106)
+VDS Wheel Spin Angle (added)
+VDS Wheel Steer Angle (added)
+
+-------------------------------------------------
+Straight Drive Time Event Variables (data type)
+
+SCC_Eval_Event_Max_Speed (float) (added)
+SCC_Eval_Event_Min_Speed (float) (added)
+SCC_Eval_Event_Avg_Speed (double) (added)
+SCC_Eval_Event_SDLP (double) (added)
+
+
+
+Obstacle Event Variables (data type)
+
+SCC_Eval_Event_Collisions (int) (added)
+SCC_Eval_Event_Max_Speed (float) (added)
+SCC_Eval_Event_Min_Speed (float) (added)
+SCC_Eval_Event_Avg_Speed (double) (added)
+SCC_Eval_Event_SDLP (double) (added)
+SCC_Eval_Event_Lane_Departure (int) (added)
+SCC_Eval_Event_Lane_Departure_Pct (float) (added)
+[for construction zone only] SCC_Eval_Event_Avg_Hdwy (float) (I DIDNOT ADD SINCE IT IS FOR construction zone only)
+
+
+
+Global variables
+
+SCC_Eval_Speedings (short) (added)
+SCC_Eval_Speeding_Pct (float) (added)
+-------------------------------------------------
+
+Algining data:
+
+check eyetracking vid -> check frame 
+
+
+
