@@ -2,7 +2,9 @@
 
 This work is for research project at [*N*HanCE](https://engineering.purdue.edu/NHanCE) lab at Purdue University through the [NSF CPS Frontier: Cognitive Autonomy for Human CPS project](https://autonomy.unm.edu/index.html)
 
-**NOTE:** sample-data folder will be deleted in the future
+**TODO:** 
+- [ ] merge-miniSim: will be removed
+- [ ] update `match_eye_trk.py`
 
 ### Table of Content
 
