@@ -5,6 +5,8 @@ This work is for research project at [*N*HanCE](https://engineering.purdue.edu/N
 **TODO:** 
 - [ ] merge-miniSim: will be removed
 - [ ] update `match_eye_trk.py`
+- [ ] remove all columns that have 1 value (e.g.: all 0)
+- [ ] merge daq w/ miniSim: miniSim get index of first and last window frame
 
 ### Table of Content
 
