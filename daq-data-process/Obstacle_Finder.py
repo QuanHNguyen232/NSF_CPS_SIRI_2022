@@ -42,6 +42,9 @@ def find_obstacle(p_id):
 
     min_loss = [sys.maxsize]*4
     min_idx = [0]*4
+
+    # left -> right: treatment
+    # (Y, X) coordinates
     tire      = [[8882.42, 28219.67],   [3234.04, 12185.81],    [28654.74, 8910.37],    [28235.50, 25054.01]][treatment-1]
     construct = [[21233.69, 26310.47],  [9011.04, 28221.55],    [3157.65, 13339.60],    [23615.03, 10930.66]][treatment-1]
     rain      = [[26676.91, 7426.58],   [21018.29, 26347.51],   [8859.78, 28217.34],    [3309.54, 13891.32]][treatment-1]
@@ -61,12 +64,12 @@ def find_obstacle(p_id):
     print(f'frames:', [frames.frame[i] for i in min_idx])
     
     # plot route
-    # plt_route(df, min_idx, obs)
+    plt_route(df, min_idx, obs)
 
     # plot speed
-    # plt_speed(speed, min_idx)
+    plt_speed(speed, min_idx)
 
 # %%
 
-for i in range(30, 33):
+for i in range(1, 8):
     find_obstacle(i)

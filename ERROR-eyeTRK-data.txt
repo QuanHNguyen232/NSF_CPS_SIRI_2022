@@ -1,0 +1,12 @@
+Here is list of Px that I cannot get data from obsrv window:
+    - Not enough data:
+        + P3: eye-trk: 45k lines (max time: 53455... but miniSim_window min time: 53456)
+        + P20: eye-trk: 7k lines while miniSim_window has 100k lines
+        + P25: not enough data
+        + P32: not enough data
+
+    - Error (FIXED):
+        + P7: error in P7.miniSim-modified line 78125 (appears 1638554618.85 -> fix: 1638554618.85300)
+        + P12: error in P12.miniSim-modified line 47213 (appears 883836520 -> fix: 8838365202)
+        + P28: error in P18.miniSim-modified line 56591 (appears 109538551 -> fix: 1095385519)
+        + P31: error in P31.miniSim-modified line 101515 (appears 1651259000.24 -> fix: 1651259000.242000)
