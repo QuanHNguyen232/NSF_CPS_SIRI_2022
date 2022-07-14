@@ -7,27 +7,33 @@ import os, math, sys
 import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 
+labels = [('tire', 'b'), ('construct', 'y'), ('rain', 'c'), ('deer', 'r')]
 # %%
 
-# CONSTANTS
 def calc_minLoss(loc_pred, loc_true) -> float:
   val = math.sqrt(( abs(loc_pred[0])-abs(loc_true[0]) )**2 + ( abs(loc_pred[1])-abs(loc_true[1]) )**2)
   return val
 
 def plt_speed(df: pd.DataFrame, min_idx: List):
     plt.plot(df.speed)
-    for idx in min_idx:
-        plt.plot([idx], [df.speed[idx]], 'ro')
+    for i, idx in enumerate(min_idx):
+        plt.plot([idx], [df.speed[idx]], labels[i][1]+'o', label=labels[i][0])
+    plt.legend()
+    plt.xlabel('Time frame')
+    plt.ylabel('Speed (mph)')
     plt.show()
 
 def plt_route(df: pd.DataFrame, min_idx: List, obs: List):
     obs_y = [obs[i][0] for i in range(len(obs))]
     obs_x = [obs[i][1] for i in range(len(obs))]
     plt.plot(df.X, df.Y)
-    plt.plot(obs_x, obs_y, 'ro')
-    plt.plot([df.X[0]], df.Y[0], 'bo')
-    for idx in min_idx:
-        plt.plot([df.X[idx]], df.Y[idx], 'gv')
+    plt.plot(obs_x, obs_y, 'ks', label='obs')
+    plt.plot([df.X[0]], df.Y[0], 'g^', label='start')
+    for i, idx in enumerate(min_idx):
+        plt.plot([df.X[idx]], df.Y[idx], labels[i][1]+'X', label=labels[i][0])
+    plt.xlabel('x-axis')
+    plt.ylabel('y-axis')
+    plt.legend()
     plt.show()
 # %%
 def find_obstacle(p_id):
@@ -60,9 +66,10 @@ def find_obstacle(p_id):
                 min_loss[i] = losses[i]
                 min_idx[i] = idx
 
-    print(f'idx: {min_idx}', end='\t')
+    print(f'idx: {min_idx}')
     print(f'frames:', [frames.frame[i] for i in min_idx])
-    
+    print(labels)
+
     # plot route
     plt_route(df, min_idx, obs)
 
@@ -71,5 +78,5 @@ def find_obstacle(p_id):
 
 # %%
 
-for i in range(1, 8):
+for i in range(1,5):
     find_obstacle(i)

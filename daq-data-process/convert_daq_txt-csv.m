@@ -15,6 +15,7 @@
 %   Optimizing code so that it can export 1 file for the whole dataset
 %   Find way to read all n *.daq files using loop
 
+
 %%%% START EDIT HERE
 
 folder_name= './P32/Driving SIM/Each-feat';
@@ -48,3 +49,7 @@ for i = 1 : N
     
 end
 fprintf('convert_daq_csv -- DONE\n')
+
+% Clear all data
+clc
+clear

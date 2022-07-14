@@ -106,7 +106,7 @@ ls = get_match_vals(p_id)
 print(len(ls))
 
 idx_lst = [i[0] for i in ls]
-isDone, df = get_window_eyetrk(p_id, idx_lst)
+# isDone, df = get_window_eyetrk(p_id, idx_lst)
 
 print(idx_lst[:10])
 

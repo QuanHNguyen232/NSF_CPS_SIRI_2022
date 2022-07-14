@@ -1,3 +1,5 @@
+eyeTRK-data:
+
 Here is list of Px that I cannot get data from obsrv window:
     - Not enough data:
         + P3: eye-trk: 45k lines (max time: 53455... but miniSim_window min time: 53456)
@@ -10,3 +12,7 @@ Here is list of Px that I cannot get data from obsrv window:
         + P12: error in P12.miniSim-modified line 47213 (appears 883836520 -> fix: 8838365202)
         + P28: error in P18.miniSim-modified line 56591 (appears 109538551 -> fix: 1095385519)
         + P31: error in P31.miniSim-modified line 101515 (appears 1651259000.24 -> fix: 1651259000.242000)
+
+____________________________________________________
+daq window:
+P9: only 1199 lines (others or 1200)

@@ -2,13 +2,13 @@
 import pandas as pd
 
 # %%
-A, B, C, D = 'tire', 'construct', 'rain', 'deer'
-treatment_lists = [
-    [A, B, D, C],
-    [B, C, A, D],
-    [C, D, B, A],
-    [D, A, C, B]
-    ]
+# A, B, C, D = 'tire', 'construct', 'rain', 'deer'
+# treatment_lists = [
+#     [A, B, D, C],
+#     [B, C, A, D],
+#     [C, D, B, A],
+#     [D, A, C, B]
+#     ]
 P_frames_list = [
     [50826, 65919, 121436, 97858],  # P1
     [89858, 36914, 55840, 114092],
@@ -51,14 +51,14 @@ def get_windows(p_id):
     
     frames_list = P_frames_list[p_id-1]
     df_filename = './P%d/P%d-daq.txt'%(p_id, p_id)
-    out_name = './P%d/P%d-obsv_wind.txt'%(p_id, p_id)
-    treatment = 4 if p_id%4==0 else p_id%4
-    treatment_list = [
-        [A, B, D, C],
-        [B, C, A, D],
-        [C, D, B, A],
-        [D, A, C, B]
-    ][treatment-1]
+    # out_name = './P%d/P%d-obsv_wind.txt'%(p_id, p_id)
+    # treatment = 4 if p_id%4==0 else p_id%4
+    # treatment_list = [
+    #     [A, B, D, C],
+    #     [B, C, A, D],
+    #     [C, D, B, A],
+    #     [D, A, C, B]
+    # ][treatment-1]
 
     
     df = pd.read_csv(df_filename, sep='\t')
@@ -68,11 +68,12 @@ def get_windows(p_id):
         # get old idx
         frame = frames_list[i]
         idx = df[df['Frames0'] == frame].index.to_list()[0]
-        print('idx: %d --- frame: %d'%(idx, frame))
 
         # get label
-        label = treatment_list[i]
+        label = ['tire', 'construct', 'rain', 'deer'][i]
         
+        print('get_windows \t idx: %d --- frame: %d \t label: %s'%(idx, frame, label))
+
         # add rows into window_df
         for j in range(idx - 299, idx + 1):    # get 5s before each obs
             window_df.loc[len(window_df.index)] = [label, j] + df.iloc[j].to_list()
@@ -97,7 +98,6 @@ def get_windows(p_id):
 # tmp_df
 # %%
 
-# Merge w/ miniSim
 def get_windows_miniSim(p_id):
     
     frames_list = P_frames_list[p_id-1]
@@ -112,7 +112,7 @@ def get_windows_miniSim(p_id):
         # get old idx
         frame = frames_list[i]
         idx = df_miniSim[df_miniSim['Frames0'] == frame].index.to_list()[0]
-        print('idx: %d --- frame: %d'%(idx, frame))
+        print('get_windows_miniSim \t idx: %d --- frame: %d'%(idx, frame))
 
         sys_time_list.append(df_miniSim['System Time'].iloc[idx])
 
@@ -140,7 +140,7 @@ def get_windows_miniSim(p_id):
 
 def merge_df(miniSim, daq_df):
     df = miniSim.merge(daq_df, how='left', on='Frames0', indicator=True)
-    out_name = './P%d/P%d-merged.txt'%(p_id, p_id)
+    out_name = './P%d/P%d-merged_v2.txt'%(p_id, p_id)
 
     #  check missing
     total_nan = df.isna().sum().sum()
@@ -160,7 +160,9 @@ def merge_df(miniSim, daq_df):
     return True, df
 
 # %%
-for p_id in range(9, 33):
+target = 4+4*7
+for p_id in range(target, target+1):
+    print('P', p_id)
 
     daq_df = get_windows(p_id)
 
@@ -170,18 +172,5 @@ for p_id in range(9, 33):
 
     if not isDone:
         break
+   
 
-
-
-
-# %%
-
-arr = []
-for p_id in range(1, 33):
-    
-    _, sys_time = get_windows_miniSim(p_id)
-    arr.append(sys_time)
-
-#%%
-for i in arr[30:33]:
-    print(i)
