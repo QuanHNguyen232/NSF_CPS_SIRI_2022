@@ -51,5 +51,4 @@ end
 fprintf('convert_daq_csv -- DONE\n')
 
 % Clear all data
-clc
 clear
