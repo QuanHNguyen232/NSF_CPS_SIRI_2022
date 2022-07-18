@@ -78,5 +78,5 @@ def find_obstacle(p_id):
 
 # %%
 
-for i in range(1,5):
+for i in range(9,10):
     find_obstacle(i)

@@ -11,7 +11,7 @@ def calc_loss(time_true, time_pred) -> float:
 
 def get_timeLst(p_id):
     
-    window_name = './P%d/P%d-merged.txt'%(p_id, p_id)
+    window_name = './P%d/P%d-merged_v2.txt'%(p_id, p_id)
     df_window = pd.read_csv(window_name, sep='\t')
 
     times = []
@@ -45,7 +45,7 @@ def get_match_vals(p_id):
   eyetrk_name = './P%d/Eye Tracking/P%d-modified.txt'%(p_id, p_id)
   df_eyetrk = pd.read_csv(eyetrk_name, sep='\t')
   
-  merge_name = './P%d/P%d-merged.txt'%(p_id, p_id)
+  merge_name = './P%d/P%d-merged_v2.txt'%(p_id, p_id)
   df_meregd = pd.read_csv(merge_name, sep='\t')
   lst_time = df_meregd['System Time'].to_list()
 
@@ -100,13 +100,13 @@ def get_window_eyetrk(p_id, idx_lst):
 #%%
 # TEST
 
-p_id = 31
+p_id = 9
 
 ls = get_match_vals(p_id)
 print(len(ls))
 
 idx_lst = [i[0] for i in ls]
-# isDone, df = get_window_eyetrk(p_id, idx_lst)
+isDone, df = get_window_eyetrk(p_id, idx_lst)
 
 print(idx_lst[:10])
 

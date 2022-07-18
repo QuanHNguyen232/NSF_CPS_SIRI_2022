@@ -2,16 +2,19 @@
 import pandas as pd
 
 #%%
-for p_id in range(1, 33):
-    if p_id==9: continue
+for p_id in range(1,33):
+    if p_id in {3, 20, 25, 32}: continue    # dont have eye-trk data
+    
     print('P', p_id)
-    filename = './P%d/P%d-merged_v2.txt'%(p_id, p_id)
+    filename = './P%d/P%d-eyetrk_wind_label.txt'%(p_id, p_id)
     df = pd.read_csv(filename, sep='\t')
     
+    print(df[df.isna().any(axis=1)].index)
+    print(df.isna().any(axis=1).sum())
+
     length = len(df)
     if length != 1200:
         print('MISS LINES')
-        break
     # 'tire', 'construct', 'rain', 'deer'
     if len(df[df['Label']=='tire'])!= 300:
         print('MISS tire')

@@ -1,12 +1,9 @@
 # NSF_CPS-SIRI-2022
 
-This work is for research project at [*N*HanCE](https://engineering.purdue.edu/NHanCE) lab at Purdue University through the [NSF CPS Frontier: Cognitive Autonomy for Human CPS project](https://autonomy.unm.edu/index.html)
+This work is for research project at [*N*HanCE](https://engineering.purdue.edu/NHanCE) lab at Purdue University through the [NSF CPS Frontier: Cognitive Autonomy for Human CPS](https://autonomy.unm.edu/index.html) project.
 
 **TODO:** 
-- [x] merge-miniSim: will be removed
-- [x] update `match_eye_trk.py`
-- [ ] remove all columns that have 1 value (e.g.: all 0)
-- [ ] merge daq w/ miniSim: miniSim get index of first and last window frame
+- [ ] Get data from Fixation data
 
 ### Table of Content
 
@@ -16,6 +13,41 @@ This work is for research project at [*N*HanCE](https://engineering.purdue.edu/N
 ---
 
 ## Files
+<!-- https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree:
+type: tree /f
+ -->
+File structure:
+```
+.
+│   .gitignore
+│   7-11-feat_list.mat
+│   feat_suggest.txt
+│   README.md
+│   requirements.txt
+│   
+├───Data-Processing
+│   │   check-missing.py
+│   │   ERROR-data.txt
+│   │   
+│   ├───daq-data-process
+│   │       accum_feat_v2.1.py
+│   │       convert_daq_txt-csv.m
+│   │       getObsvWindow.py
+│   │       Obstacle_Finder.py
+│   │
+│   └───eye-track-data-process
+│           convert-eyetracking-txt.py
+│           convert-miniSim-txt.py
+│           get_Fixation_wind.py
+│           match_eye_trk.py
+│           miniSim-to-txt.py
+│
+└───Models
+    │   Kmeans.py
+    │   MyDataLoader.py
+    │   RF.py
+    │   Utils.py
+```
 
 1. `convert_daq_csv.m`: convert daq features into csv files - each feature results in 1 one csv file (Matlab) -- do not use this.
 2. `convert_daq_txt.m`: convert daq features into txt files - each feature results in 1 one txt file (Matlab).

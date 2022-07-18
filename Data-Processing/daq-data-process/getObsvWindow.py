@@ -160,7 +160,7 @@ def merge_df(miniSim, daq_df):
     return True, df
 
 # %%
-target = 4+4*7
+target = 9
 for p_id in range(target, target+1):
     print('P', p_id)
 
