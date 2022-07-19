@@ -2,13 +2,7 @@
 import pandas as pd
 
 # %%
-# A, B, C, D = 'tire', 'construct', 'rain', 'deer'
-# treatment_lists = [
-#     [A, B, D, C],
-#     [B, C, A, D],
-#     [C, D, B, A],
-#     [D, A, C, B]
-#     ]
+# Order in P_frames_list: ('tire', 'construct', 'rain', 'deer')
 P_frames_list = [
     [50826, 65919, 121436, 97858],  # P1
     [89858, 36914, 55840, 114092],
@@ -48,18 +42,16 @@ P_frames_list = [
 # %%
 
 def get_windows(p_id):
-    
+    ''' Get observation window from daq data
+    Arguments:
+        p_id -- ?
+
+    Returns:
+        window_df -- ?
+    '''
+
     frames_list = P_frames_list[p_id-1]
     df_filename = './P%d/P%d-daq.txt'%(p_id, p_id)
-    # out_name = './P%d/P%d-obsv_wind.txt'%(p_id, p_id)
-    # treatment = 4 if p_id%4==0 else p_id%4
-    # treatment_list = [
-    #     [A, B, D, C],
-    #     [B, C, A, D],
-    #     [C, D, B, A],
-    #     [D, A, C, B]
-    # ][treatment-1]
-
     
     df = pd.read_csv(df_filename, sep='\t')
     window_df = pd.DataFrame(columns=['Label', 'old_idx'] + df.columns.to_list())
@@ -71,7 +63,6 @@ def get_windows(p_id):
 
         # get label
         label = ['tire', 'construct', 'rain', 'deer'][i]
-        
         print('get_windows \t idx: %d --- frame: %d \t label: %s'%(idx, frame, label))
 
         # add rows into window_df
@@ -84,13 +75,6 @@ def get_windows(p_id):
 
     print('window_df shape', window_df.shape)
 
-    # Save to file
-    # if window_df.isna().sum().sum() == 0:
-    #     window_df.to_csv(out_name, header=True, index=False, sep='\t', mode='a')
-    # else:
-    #     print('ERR ERR ERR')
-    #     return False
-
     print('get_windows func --- DONE')
     return window_df
 
@@ -99,7 +83,15 @@ def get_windows(p_id):
 # %%
 
 def get_windows_miniSim(p_id):
-    
+    ''' Get observation window from .miniSim file
+    Arguments:
+        p_id -- ?
+
+    Returns:
+        window_df -- ?
+        sys_time_list -- ?
+    '''
+
     frames_list = P_frames_list[p_id-1]
     sys_time_list = []  # for eye-tracking only
 
@@ -139,6 +131,16 @@ def get_windows_miniSim(p_id):
 # %%
 
 def merge_df(miniSim, daq_df):
+    ''' Merge .miniSim file with daq data
+    Arguments:
+        miniSim -- ?
+        daq_df -- ?
+
+    Returns:
+        boolean -- ?
+        df -- ?
+    '''
+
     df = miniSim.merge(daq_df, how='left', on='Frames0', indicator=True)
     out_name = './P%d/P%d-merged_v2.txt'%(p_id, p_id)
 
@@ -160,6 +162,9 @@ def merge_df(miniSim, daq_df):
     return True, df
 
 # %%
+# ===========================================
+#                TESTING
+# ===========================================
 target = 9
 for p_id in range(target, target+1):
     print('P', p_id)

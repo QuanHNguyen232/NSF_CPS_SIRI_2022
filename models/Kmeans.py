@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 
 from MyDataLoader import daq_dataloader
+from MyConfig import MY_SEED
+np.random.seed(MY_SEED)
 
 #%% CONFIG
 MY_SEED = 0

@@ -11,8 +11,17 @@ labels = [('tire', 'b'), ('construct', 'y'), ('rain', 'c'), ('deer', 'r')]
 # %%
 
 def calc_minLoss(loc_pred, loc_true) -> float:
-  val = math.sqrt(( abs(loc_pred[0])-abs(loc_true[0]) )**2 + ( abs(loc_pred[1])-abs(loc_true[1]) )**2)
-  return val
+    ''' Calculate the distance b/w vehicle and obstacle
+    Arguments:
+        loc_pred -- ?
+        loc_true -- ?
+
+    Returns:
+        val -- distance b/w vehicle and obstacle (float)
+    '''
+
+    val = math.sqrt(( abs(loc_pred[0])-abs(loc_true[0]) )**2 + ( abs(loc_pred[1])-abs(loc_true[1]) )**2)
+    return val
 
 def plt_speed(df: pd.DataFrame, min_idx: List):
     plt.plot(df.speed)
@@ -24,6 +33,16 @@ def plt_speed(df: pd.DataFrame, min_idx: List):
     plt.show()
 
 def plt_route(df: pd.DataFrame, min_idx: List, obs: List):
+    ''' Calculate the distance b/w vehicle and obstacle
+    Arguments:
+        df -- ?
+        min_idx -- ?
+        obs -- ?
+
+    Returns:
+        None
+    '''
+
     obs_y = [obs[i][0] for i in range(len(obs))]
     obs_x = [obs[i][1] for i in range(len(obs))]
     plt.plot(df.X, df.Y)
@@ -36,7 +55,16 @@ def plt_route(df: pd.DataFrame, min_idx: List, obs: List):
     plt.legend()
     plt.show()
 # %%
+
 def find_obstacle(p_id):
+    ''' Merge .miniSim file with daq data
+    Arguments:
+        p_id -- ?
+
+    Returns:
+        None
+    '''
+
     print(f'\nP{p_id}')
     folder_path = './P%d/Driving SIM/Each-feat/'%(p_id)
     treatment = 4 if p_id%4==0 else p_id%4
@@ -49,7 +77,7 @@ def find_obstacle(p_id):
     min_loss = [sys.maxsize]*4
     min_idx = [0]*4
 
-    # left -> right: treatment
+    # left -> right: treatment 1 -> 4
     # (Y, X) coordinates
     tire      = [[8882.42, 28219.67],   [3234.04, 12185.81],    [28654.74, 8910.37],    [28235.50, 25054.01]][treatment-1]
     construct = [[21233.69, 26310.47],  [9011.04, 28221.55],    [3157.65, 13339.60],    [23615.03, 10930.66]][treatment-1]

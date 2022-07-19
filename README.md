@@ -1,4 +1,4 @@
-# NSF_CPS-SIRI-2022
+# NSF-CPS-SIRI-2022
 
 This work is for research project at [*N*HanCE](https://engineering.purdue.edu/NHanCE) lab at Purdue University through the [NSF CPS Frontier: Cognitive Autonomy for Human CPS](https://autonomy.unm.edu/index.html) project.
 
@@ -79,6 +79,9 @@ File structure:
 7. Result: each csv file contains it corresponding feature
 
 ### Setup:
+<details>
+<summary markdown="span">Click to expand</summary>
+
 1. Create an environment for this project. I suggest using [Anaconda](https://www.anaconda.com/). Run this command to create virtual env ([cheatsheet](https://anaconda.cloud/conda-cheatsheet)):
 ```
 conda create --name env_name python=3.9.7
@@ -87,6 +90,8 @@ Then activate the env:
 ```
 conda activate env_name
 ```
+
+</details>
 
 ### requirements.txt:
 1. Run this command to install the required libraries:
@@ -108,12 +113,5 @@ python accum_csv.py filename.txt -x extension
 
 ### miniSim-to-txt.py;
 
-### merge-miniSim.py
-1. Type this command:
-```
-python read-miniSim.py out_name file_1 file_2 merge_on
-```
-*With*:
-* file_1 = 'accum-data.txt'
-* file_2 = 'P13-miniSim.txt'
-* merge_on = 'Frames0'
+
+<p align="right"><a href="#nsf-cps-siri-2022">[Back to top]</a></p>
