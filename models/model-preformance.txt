@@ -1,0 +1,97 @@
+MY_SEED = 13
+Apply StdScaler
+30-frame windows -> calculate mean, std
+Cross-Valid = 3
+
+======================================================================
+daq -- all feats
+    - (1280, 339) -> (1280, 117) after dropping all feats that have only 1 values and add 'label_encoded'
+
+    DTree       acc=0.935   DecisionTreeClassifier(criterion='entropy', splitter='best', max_depth=8, min_samples_leaf=1, min_samples_split=4, random_state=13)
+    RForest     acc=0.956   RandomForestClassifier(criterion='entropy', max_depth=10, min_samples_split=2, n_estimators=80, random_state=13)
+    kNN         acc=0.966   KNeighborsClassifier(n_neighbors=1)
+    SVM_linear  acc=0.896   SVC(C=0.9, kernel='linear', random_state=13)
+    SVM_rbf     acc=0.935   SVC(C=20, gamma=0.01, random_state=13)
+    NBayes      acc=0.568   GaussianNB(var_smoothing=0.012328467394420659)
+    LRegression acc=0.919   LogisticRegression(C=10, penalty='l1', random_state=13, solver='liblinear')
+    
+    Important feats:
+        - VDS Veh Speed
+        - VDS Wheel Spin Angle 0, 1, 2, 3
+        - VDS Veh Dist
+        - VDS Wheel Steer Angle
+        - VDS Veh Heading (cannot use)
+
+======================================================================
+daq -- feats: daq_features
+    - (1280, 11) -> (1280, 12) after dropping all feats that have only 1 values and add 'label_encoded'
+
+    DTree       acc=0.760   DecisionTreeClassifier(criterion='entropy', max_depth=13, min_samples_leaf=1, min_samples_split=3, random_state=13, splitter='random')
+    RForest     acc=0.865   RandomForestClassifier(max_depth=20, min_samples_split=2, n_estimators=60, random_state=13)
+    kNN         acc=0.826   KNeighborsClassifier(n_neighbors=1)
+    SVM_linear  acc=0.688   SVC(C=1, kernel='linear', random_state=13)
+    SVM_rbf     acc=0.857   SVC(C=20, gamma=0.2, kernel='rbf', random_state=13)
+    NBayes      acc=0.630   GaussianNB(var_smoothing=0.005336699231206307)
+    LRegression acc=0.682   LogisticRegression(C=0.9, penalty='l1', random_state=13, solver='liblinear')
+    
+    Important feats:
+        - VDS Veh Speed
+        - VDS Steering Wheel Angle
+        - SCC Lane Deviation 1
+        - VDS Steering Wheel Angle Rate
+        - VDS Brake Pedal Force
+
+======================================================================
+raw-eyetrk -- all feats
+    - (1120, 69) -> (1120, 48) after dropping all feats that have only 1 values and add 'label_encoded'
+
+    DTree       acc=0.583   DecisionTreeClassifier(criterion='entropy', max_depth=8, min_samples_leaf=1, random_state=13, splitter='random')
+    RForest     acc=0.714   RandomForestClassifier(criterion='gini', max_depth=15, min_samples_split=2, n_estimators=400, random_state=13)
+    kNN         acc=0.699   KNeighborsClassifier(n_neighbors=1)
+    SVM_linear  acc=0.586   SVC(C=0.9, kernel='linear', random_state=13)
+    SVM_rbf     acc=0.670   SVC(C=20, gamma=0.01, kernel='rbf', random_state=13)
+    NBayes      acc=0.402   GaussianNB(var_smoothing=0.004328761281083057)
+    LRegression acc=0.583   LogisticRegression(C=20, penalty='l1', random_state=13, solver='liblinear')
+    
+    Important feats:
+        - both eye Rot (X, Y)
+        - both eye Pos (X, Y)
+        - both eye Pupil Diameter
+        - 
+
+======================================================================
+raw-eyetrk -- feats: eyetrk_features
+    - (1120, 17) -> (1120, 14) after dropping all feats that have only 1 values and add 'label_encoded'
+
+    DTree       acc=0.527   DecisionTreeClassifier(criterion='entropy', max_depth=9, min_samples_leaf=1, min_samples_split=3, random_state=13)
+    RForest     acc=0.643   RandomForestClassifier(criterion='gini', max_depth=15, min_samples_split=4, n_estimators=400, random_state=13)
+    kNN         acc=0.664   KNeighborsClassifier(n_neighbors=1)
+    SVM_linear  acc=0.452   SVC(C=10, kernel='linear', random_state=13)
+    SVM_rbf     acc=0.670   SVC(C=20, gamma=0.1, kernel='rbf', random_state=13)
+    NBayes      acc=0.339   GaussianNB(var_smoothing=0.1)
+    LRegression acc=0.440   LogisticRegression(C=20, penalty='l1', random_state=13, solver='liblinear')
+
+    Important feats:
+        - both eye Position (left, right, mean, std)
+        - both eye Pupil Diameter (left, right, mean, std)
+
+======================================================================
+Combined -- feats: daq_features & eyetrk_features
+    - (1120, 23) -> (1120, 24) after dropping all feats that have only 1 values and add 'label_encoded'
+
+    DTree       acc=0.753   DecisionTreeClassifier(criterion='gini', max_depth=10, min_samples_leaf=1, min_samples_split=4, random_state=13)
+    RForest     acc=0.881   RandomForestClassifier(criterion='gini', max_depth=15, min_samples_split=4, n_estimators=80, random_state=13)
+    kNN         acc=0.842   KNeighborsClassifier(n_neighbors=1)
+    SVM_linear  acc=0.720   SVC(C=1, kernel='linear', random_state=13)
+    SVM_rbf     acc=0.848   SVC(C=20, gamma=0.1, kernel='rbf', random_state=13)
+    NBayes      acc=0.649   GaussianNB(var_smoothing=0.002848035868435802)
+    LRegression acc=0.705   LogisticRegression(C=0.5, penalty='l1', random_state=13, solver='liblinear')
+
+    Important feats:
+        - VDS Veh Speed
+        - VDS Steering Wheel Angle
+        - SCC Lane Deviation 1
+        - VDS Steering Wheel Angle Rate
+        - both eye Pos (X, Y)
+        - VDS Brake Pedal Force
+        - both eye Pupil Diameter (last)
