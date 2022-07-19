@@ -1,4 +1,4 @@
-MY_SEED = 0
+MY_SEED = 13
 
 daq_features = [
     'VDS_Brake_Pedal_Force0',
@@ -12,9 +12,27 @@ eyetrk_features = [
     'Lft X Pos',
     'Lft Y Pos',
     'Lft Pupil Diameter',
+    # 'L Eyelid Opening', # useless
     'Rt X Pos',
     'Rt Y Pos',
     'Rt Pupil Diameter',
-    'L Eyelid Opening',
-    'R Eyelid Opening'
+    # 'R Eyelid Opening'  # useless
     ]
+
+default_daq_feats_drop = [
+    'old_idx_x',
+    'Frames0',
+    'X',
+    'System Time',
+    'old_idx_y',
+    '_merge'
+]
+
+default_eyetrk_feats_drop = [
+    'eyetrk_idx',
+    'Obsv.',
+    'Frame',
+    'Capture Time',
+    'System Time',
+    'Sensor Time'
+]
